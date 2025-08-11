@@ -24,19 +24,31 @@ public class PlayerShooting : MonoBehaviour
             Shoot();
             cd = fireRate;
         }
-        if (aimWithMouse) {
-            Vector3 m = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            m.z = 0f;
+        if (aimWithMouse)
+        {
+            Vector3 mouseScreen = Input.mousePosition;
+            mouseScreen.z = Mathf.Abs(Camera.main.transform.position.z - firePoint.position.z);
+            Vector3 m = Camera.main.ScreenToWorldPoint(mouseScreen);
+
             Vector2 dir = (m - firePoint.position).normalized;
             float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            firePoint.rotation = Quaternion.Euler(0,0,angle);
+            firePoint.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
     void Shoot() {
-        var go = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        Vector3 mouseScreen = Input.mousePosition;
+        mouseScreen.z = Mathf.Abs(Camera.main.transform.position.z - firePoint.position.z);
+        Vector3 m = Camera.main.ScreenToWorldPoint(mouseScreen);
+
+        Vector2 dir = (m - firePoint.position).normalized;
+
+        var go = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
         var b = go.GetComponent<Bullet>();
-        b.direction = firePoint.right;//朝firepoint指向
-        b.targetTag = "Enemy";//打敌人
-        
+        b.direction = dir;                 // 传给子弹
+        b.targetTag = "Enemy";
+
+        float ang = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        go.transform.rotation = Quaternion.Euler(0, 0, ang);
     }
 }

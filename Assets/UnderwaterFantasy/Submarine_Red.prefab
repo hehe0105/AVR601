@@ -210,7 +210,7 @@ MonoBehaviour:
   firePoint: {fileID: 376077066131058242}
   fireInterval: 1.2
   aimLead: 0
-  bonusDamage: 0
+  bonusDamage: 5
 --- !u!1 &4710476258125969903
 GameObject:
   m_ObjectHideFlags: 0

@@ -241,7 +241,7 @@ MonoBehaviour:
   firePoint: {fileID: 8269708771755712380}
   fireInterval: 1.2
   aimLead: 0
-  bonusDamage: 0
+  bonusDamage: 10
 --- !u!1001 &6272154752304719914
 PrefabInstance:
   m_ObjectHideFlags: 0

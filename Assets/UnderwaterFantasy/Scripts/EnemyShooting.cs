@@ -5,7 +5,7 @@ public class EnemyShooting : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform firePoint;
-    public float fireInterval = 1.2f;//开火间隔
+    public float fireInterval = 2f;//开火间隔
     public float aimLead = 0f;//简单判断
     public int bonusDamage = 0;//额外伤害
 
