@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-
-    public GameObject enemyPrefab;
+    [Header("敌人预制体列表（不同颜色/属性）")]
+    public GameObject[] enemyPrefabs;//多个潜艇prefab
     public float spawnInterval = 2f;
     public float minY = -3f;
     public float maxY = 3f;
@@ -25,7 +25,11 @@ public class EnemySpawner : MonoBehaviour
         }
     }
     void SpawnEnemy() {
+
+        int randomIndex = Random.Range(0, enemyPrefabs.Length);
+        GameObject selectedEnemy = enemyPrefabs[randomIndex];
         Vector3 spawnPos = new Vector3(300f,Random.Range(minY,maxY),-5f);
-        Instantiate(enemyPrefab,spawnPos,Quaternion.identity);
+        Instantiate(selectedEnemy,spawnPos,Quaternion.identity);
+
     }
 }
