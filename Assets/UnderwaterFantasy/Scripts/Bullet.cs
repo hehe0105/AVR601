@@ -11,6 +11,11 @@ public class Bullet : MonoBehaviour
     public Vector2 direction = Vector2.right;
     public string targetTag = "Enemy"; //玩家子弹默认打Enemy
 
+    public AudioClip shootClip;
+    public float shootVolume = 1f;
+    public bool playOnlyForPlayerBullet = true;
+    public AudioSource twoDSFXSource;
+
     void Awake()//确保2d子弹不受重力，碰撞用触发器
     {
         var rb = GetComponent<Rigidbody2D>();
@@ -23,6 +28,22 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, lifeTime);//防止掉帧残留
+        if(shootClip != null)
+        {
+            bool isPlayBullet = (targetTag == "Enemy");
+            if(!playOnlyForPlayerBullet || isPlayBullet)
+            {
+                if(twoDSFXSource != null)
+                {
+                    twoDSFXSource.PlayOneShot(shootClip, shootVolume);
+                }
+                else
+                {
+                    var listenerPos = Camera.main ? Camera.main.transform.position : transform.position;
+                    AudioSource.PlayClipAtPoint(shootClip, listenerPos, shootVolume);
+                }
+            }
+        }
     }
 
     // Update is called once per frame

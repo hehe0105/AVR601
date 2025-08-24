@@ -180,3 +180,7 @@ MonoBehaviour:
   lifeTime: 10
   direction: {x: 1, y: 0}
   targetTag: Enemy
+  shootClip: {fileID: 8300000, guid: 4310474905e266640852f43bd609a1a4, type: 3}
+  shootVolume: 1
+  playOnlyForPlayerBullet: 1
+  twoDSFXSource: {fileID: 0}

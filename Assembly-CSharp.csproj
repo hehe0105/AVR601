@@ -56,6 +56,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\UnderwaterFantasy\Scripts\EnemySpawner.cs" />
+    <Compile Include="Assets\UnderwaterFantasy\Scripts\Audio\SoundManager.cs" />
     <Compile Include="Assets\UnderwaterFantasy\Scripts\EnemyStats.cs" />
     <Compile Include="Assets\UnderwaterFantasy\Scripts\HealthBarScale.cs" />
     <Compile Include="Assets\UnderwaterFantasy\Scripts\Perspective2DSortMode.cs" />
